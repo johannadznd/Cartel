@@ -11,7 +11,7 @@ public class cardorder {
 	
 	private Date creation;
 	
-	private Integer user;
+	private User user;
 
 	public Integer getIdCardOrder() {
 		return idCardOrder;
@@ -37,11 +37,11 @@ public class cardorder {
 		this.creation = creation;
 	}
 
-	public Integer getUser() {
+	public User getUser() {
 		return user;
 	}
 
-	public void setUser(Integer user) {
+	public void setUser(User user) {
 		this.user = user;
 	}
 
