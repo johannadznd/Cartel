@@ -1,49 +1,29 @@
 package com.cartel.cartel.Model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Table(name = "T_User")
+@Entity
 public class User {
 	
-	//idUser
-	private int id;
-	//UserfirstName
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	private String firstName;
-	//UserlastName
 	private String lastName;
-	//UserEmail
 	private String email;
-	//idAdress
 	private String adress;
-	
-	
-	// Constructeur custom
-		public User( int id, String firstName, String lastName, String email, String adress)
-		{
-			this.id = id;
-			this.firstName = firstName;
-			this.lastName = lastName;
-			this.email = email;
-			this.adress = adress;
-			
-		}
-	
-	
-	
-	
-	
-	
-
-	/**
-	 * @return the id
-	 */
-	public int getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	/**
 	 * @return the firstName
