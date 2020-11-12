@@ -11,7 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,7 +20,6 @@ import com.cartel.cartel.Enum.accessoryType;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name = "T_Product")
 @Entity
 public class Product {
 
@@ -33,9 +31,10 @@ public class Product {
 	private Integer price;
 	private String picture;
 	private accessoryType accessoryType;
-	private Array dimension;
 	
-	@ManyToMany(mappedBy = "movies", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	
+	
+	@ManyToMany(mappedBy = "products", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	private Set<CardOrder> cardOrders = new HashSet<>();
 	
 	/**
@@ -86,18 +85,7 @@ public class Product {
 	public void setAccessoryType(accessoryType accessoryType) {
 		this.accessoryType = accessoryType;
 	}
-	/**
-	 * @return the dimension
-	 */
-	public Array getDimension() {
-		return dimension;
-	}
-	/**
-	 * @param dimension the dimension to set
-	 */
-	public void setDimension(Array dimension) {
-		this.dimension = dimension;
-	}
+
 	
     public Set<CardOrder> getCardOrders() {
         return cardOrders;
@@ -115,7 +103,7 @@ public class Product {
                 ", name='" + name + '\'' +
                 ", picture='" + picture + '\'' +
                 ", accessoryType='" + accessoryType + '\'' +
-                ", dimension='" + dimension + '\'' +
                 '}';
-    }
+    
+    }   
 }
