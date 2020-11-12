@@ -3,7 +3,8 @@
  */
 package com.cartel.cartel.Model;
 
-import java.util.Date;
+import java.sql.Timestamp;
+=======
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -16,7 +17,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
 
 import lombok.AllArgsConstructor;
@@ -30,6 +31,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+
 @Table(name = "CardOrder")
 @Entity
 public class CardOrder {
@@ -39,10 +41,12 @@ public class CardOrder {
 	private Long id;
 	
 	private float price;
-	private Date creation;
-	private Integer user;
+	private Timestamp creation;
 	
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+	@ManyToOne @JoinColumn(name="User")
+    private User user;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name = "product_cardorder",
             joinColumns = {@JoinColumn(name = "cardorder")},
@@ -67,28 +71,23 @@ public class CardOrder {
 	/**
 	 * @return the creation
 	 */
-	public Date getCreation() {
+	public Timestamp getCreation() {
 		return creation;
 	}
 
 	/**
 	 * @param creation the creation to set
 	 */
-	public void setCreation(Date creation) {
+	public void setCreation(Timestamp creation) {
 		this.creation = creation;
 	}
 
-	/**
-	 * @return the user
-	 */
-	public Integer getUser() {
+	
+	public User getUser() {
 		return user;
 	}
 
-	/**
-	 * @param user the user to set
-	 */
-	public void setUser(Integer user) {
+	public void setUser(User user) {
 		this.user = user;
 	}
 	
@@ -105,6 +104,8 @@ public class CardOrder {
                 ", user='" + user + '\'' +
                 ", products='" + products.stream().map(Product::getName).collect(Collectors.toList()) + '\'' +
                 '}';
+    
     }
-
+    
+    
 }

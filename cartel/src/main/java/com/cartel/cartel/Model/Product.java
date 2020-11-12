@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+
 import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 
@@ -27,6 +28,7 @@ import com.cartel.cartel.Enum.accessoryType;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+
 @Table(name = "Product")
 @Entity
 public class Product {
@@ -40,6 +42,7 @@ public class Product {
 	private String picture;
 	private accessoryType accessoryType;
 	
+
 	@ElementCollection
 	@OrderColumn
 	private String[] dimension;
@@ -95,6 +98,7 @@ public class Product {
 	public void setAccessoryType(accessoryType accessoryType) {
 		this.accessoryType = accessoryType;
 	}
+
 	/**
 	 * @return the dimension
 	 */
@@ -107,6 +111,7 @@ public class Product {
 	public void setDimension(String[] dimension) {
 		this.dimension = dimension;
 	}
+
 	
     public Set<CardOrder> getCardOrders() {
         return cardOrders;
@@ -124,8 +129,9 @@ public class Product {
                 ", name='" + name + '\'' +
                 ", picture='" + picture + '\'' +
                 ", accessoryType='" + accessoryType + '\'' +
-                ", dimension='" + dimension + '\'' +
                 '}';
+    
+    }   
     }
-	
+
 }
