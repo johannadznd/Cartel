@@ -1,6 +1,9 @@
+/**
+ * 
+ */
 package com.cartel.cartel.Model;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -20,10 +23,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * @author USER
+ *
+ */
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name = "T_CardOrder")
+@Table(name = "CardOrder")
 @Entity
 public class CardOrder {
 	
