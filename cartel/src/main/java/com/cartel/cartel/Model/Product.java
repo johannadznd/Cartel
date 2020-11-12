@@ -1,6 +1,5 @@
 package com.cartel.cartel.Model;
 
-import java.sql.Array;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,10 +12,15 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.hibernate.mapping.Array;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+
 import com.cartel.cartel.Enum.accessoryType;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -118,4 +122,5 @@ public class Product {
                 ", dimension='" + dimension + '\'' +
                 '}';
     }
+	
 }
