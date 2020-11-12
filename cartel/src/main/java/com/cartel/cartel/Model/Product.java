@@ -1,16 +1,17 @@
 package com.cartel.cartel.Model;
 
-import java.sql.Array;
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -21,7 +22,7 @@ import com.cartel.cartel.Enum.accessoryType;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name = "T_Product")
+@Table(name = "Product")
 @Entity
 public class Product {
 
@@ -33,9 +34,12 @@ public class Product {
 	private Integer price;
 	private String picture;
 	private accessoryType accessoryType;
-	private Array dimension;
 	
-	@ManyToMany(mappedBy = "movies", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	@ElementCollection
+	@OrderColumn
+	private String[] dimension;
+	
+	@ManyToMany(mappedBy = "products", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	private Set<CardOrder> cardOrders = new HashSet<>();
 	
 	/**
@@ -89,13 +93,13 @@ public class Product {
 	/**
 	 * @return the dimension
 	 */
-	public Array getDimension() {
+	public String[] getDimension() {
 		return dimension;
 	}
 	/**
 	 * @param dimension the dimension to set
 	 */
-	public void setDimension(Array dimension) {
+	public void setDimension(String[] dimension) {
 		this.dimension = dimension;
 	}
 	
