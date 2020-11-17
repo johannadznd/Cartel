@@ -4,7 +4,6 @@
 package com.cartel.cartel.Model;
 
 import java.sql.Timestamp;
-=======
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -18,6 +17,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.JoinColumn;
 
 import lombok.AllArgsConstructor;
