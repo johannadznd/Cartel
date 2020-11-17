@@ -6,6 +6,8 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,8 +16,6 @@ import javax.persistence.ManyToMany;
 
 import javax.persistence.OrderColumn;
 import javax.persistence.Table;
-
-import org.hibernate.mapping.Array;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,7 +28,6 @@ import com.cartel.cartel.Enum.accessoryType;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-
 @Table(name = "Product")
 @Entity
 public class Product {
@@ -40,12 +39,12 @@ public class Product {
 	private String name;
 	private Integer price;
 	private String picture;
+	@Enumerated(EnumType.STRING)
 	private accessoryType accessoryType;
 	
 
-	@ElementCollection
-	@OrderColumn
-	private String[] dimension;
+
+	private String dimension;
 	
 	@ManyToMany(mappedBy = "products", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	private Set<CardOrder> cardOrders = new HashSet<>();
@@ -102,13 +101,13 @@ public class Product {
 	/**
 	 * @return the dimension
 	 */
-	public String[] getDimension() {
+	public String getDimension() {
 		return dimension;
 	}
 	/**
 	 * @param dimension the dimension to set
 	 */
-	public void setDimension(String[] dimension) {
+	public void setDimension(String dimension) {
 		this.dimension = dimension;
 	}
 
