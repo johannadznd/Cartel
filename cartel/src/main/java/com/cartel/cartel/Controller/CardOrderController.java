@@ -30,21 +30,7 @@ public class CardOrderController {
 	
 	CardOrderController(CardOrderRepository cardOrderRepository){
 		this.repository = cardOrderRepository;
-	}
-	
-	
-	//CRUD
-	
-	/**
-	 * get toute les commandes
-	 * @return liste des commandes
-	 */
-	
-	@GetMapping(value="/commandes")
-	public List<CardOrder>findAll(){
-		return repository.findAll();
-	}
-	
+	}	
 	
 	/**
 	 * Recupérer toutes les commandes avec un id

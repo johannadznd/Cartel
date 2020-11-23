@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 11 nov. 2020 à 10:12
+-- Généré le : lun. 23 nov. 2020 à 16:39
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.4.12
 
@@ -30,19 +30,19 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `card_order`;
 CREATE TABLE IF NOT EXISTS `card_order` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `price` int(11) NOT NULL,
+  `price` int(11) DEFAULT NULL,
   `creation` datetime NOT NULL,
-  `user` int(11) NOT NULL,
+  `user` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_User` (`user`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `card_order`
 --
 
 INSERT INTO `card_order` (`id`, `price`, `creation`, `user`) VALUES
-(1, 12, '2020-11-18 11:43:13', 0);
+(2, 12, '2020-11-11 15:42:42', 2);
 
 -- --------------------------------------------------------
 
@@ -54,12 +54,30 @@ DROP TABLE IF EXISTS `product`;
 CREATE TABLE IF NOT EXISTS `product` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
-  `price` float NOT NULL,
+  `price` int(11) NOT NULL,
   `picture` varchar(510) NOT NULL,
-  `dimension` longtext NOT NULL COMMENT 'Array',
-  `accessory_type` enum('sleeve','box','carpet') NOT NULL,
+  `dimension` varchar(510) DEFAULT NULL COMMENT 'Array',
+  `accessory_type` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `product`
+--
+
+INSERT INTO `product` (`id`, `name`, `price`, `picture`, `dimension`, `accessory_type`) VALUES
+(12, 'sfsdq', 12, 'zfdsdf', 'ddvdvdc', 'sleeve'),
+(13, 'ezfzefzef', 12, 'zfdsdf', 'ddvdvdc', 'sleeve'),
+(14, 'ezfzefzef', 12, 'zfdsdf', 'ddvdvdc', 'sleeve'),
+(15, 'ezfzefzef', 12, 'zfdsdf', 'ddvdvdc', 'sleeve'),
+(16, 'ezfzefzef', 12, 'zfdsdf', 'ddvdvdc', 'sleeve'),
+(17, 'sdsdf', 12, 'sqfqs', 'sqsfqsf', 'sleeve'),
+(18, 'sdsdf', 12, 'sqfqs', 'sqsfqsf', 'sleeve'),
+(19, 'sdsdf', 12, 'sqfqs', 'sqsfqsf', 'sleeve'),
+(20, 'sdsdf', 12, 'sqfqs', 'sqsfqsf', 'sleeve'),
+(21, 'sdsdf', 12, 'sqfqs', 'sqsfqsf', 'sleeve'),
+(22, 'sdsdf', 12, 'sqfqs', 'sqsfqsf', 'sleeve'),
+(23, 'sdsdf', 12, 'sqfqs', 'sqsfqsf', 'sleeve');
 
 -- --------------------------------------------------------
 
@@ -81,8 +99,7 @@ CREATE TABLE IF NOT EXISTS `product_cardorder` (
 --
 
 INSERT INTO `product_cardorder` (`cardorder`, `product`) VALUES
-(1, 1),
-(2, 1);
+(2, 12);
 
 -- --------------------------------------------------------
 
@@ -98,15 +115,19 @@ CREATE TABLE IF NOT EXISTS `user` (
   `email` varchar(255) NOT NULL,
   `adress` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `user`
 --
 
 INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `adress`) VALUES
-(1, 'toto', 'tata', 'toto@gmail.com', '123 rue de la boustifaille'),
-(2, 'rterrf', 'qfdsfdsfs', 'sdfdsf', 'dfsdfdsfs');
+(6, 'aefijoi', 'zfds', 'cxwcwxc', 'dsfsdfsfd'),
+(2, 'rterrf', 'qfdsfdsfs', 'sdfdsf', 'dfsdfdsfs'),
+(3, 'fdsf', 'dsfsdf', 'sdfesdgsdfdsf', 'dfsqsqsddfdsfs'),
+(8, 'qsqsd', 'zfds', 'cxwcwxc', 'dsfsdfsfd'),
+(7, 'qsqsd', 'zfds', 'cxwcwxc', 'dsfsdfsfd'),
+(9, 'qsqsd', 'zfds', 'cxwcwxc', 'dsfsdfsfd');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

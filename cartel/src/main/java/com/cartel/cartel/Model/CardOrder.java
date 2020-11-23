@@ -43,7 +43,7 @@ public class CardOrder {
 	private float price;
 	private Timestamp creation;
 	
-	@ManyToOne @JoinColumn(name="User")
+	@ManyToOne(cascade = CascadeType.ALL)
     private User user;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
