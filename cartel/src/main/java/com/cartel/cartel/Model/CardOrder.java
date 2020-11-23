@@ -39,11 +39,11 @@ public class CardOrder {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
 	private float price;
 	private Timestamp creation;
 	
-	@ManyToOne @JoinColumn(name="User")
+	@ManyToOne()
+	@JoinColumn(name = "user" )
     private User user;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -106,6 +106,4 @@ public class CardOrder {
                 '}';
     
     }
-    
-    
 }

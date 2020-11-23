@@ -66,8 +66,8 @@ public class CardOrderController {
 	 */
 	
 	@PostMapping(value = "/create/one")
-	public CardOrder create(@RequestBody CardOrder cardOrder) {
-		return repository.save(cardOrder);
+	public List<CardOrder> create(@RequestBody List<CardOrder> cardOrder) {
+		return repository.saveAll(cardOrder);
 	}
 	
 	/**
