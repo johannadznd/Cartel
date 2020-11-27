@@ -3,6 +3,7 @@
  */
 package com.cartel.cartel.Controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cartel.cartel.Enum.accessoryType;
 import com.cartel.cartel.Model.Product;
 import com.cartel.cartel.Repository.ProductRepository;
 
@@ -40,6 +42,23 @@ public class ProductController {
 	  @GetMapping(value= "/tous")
 	  public List<Product> findAll(){
 		  return repository.findAll();
+	  }
+	  
+	  /**
+	   * Permet dde récupérer l'ensemble des products.
+	   * @return la liste products.
+	   */
+	  @GetMapping(value= "/category/{category}")
+	  public List<Product> findAllByCategory(@PathVariable("category") String category){
+		  List<Product> products = new ArrayList<>();
+		  
+	      for(Product product : repository.findAll()) {
+	    	  if(product.getAccessoryType().toString().equals(category)) {
+	    		  products.add(product);
+	    	  }
+	      }
+		  
+		  return products;
 	  }
 	
 
