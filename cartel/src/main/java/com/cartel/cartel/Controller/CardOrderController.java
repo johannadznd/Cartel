@@ -6,6 +6,7 @@ package com.cartel.cartel.Controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +23,7 @@ import com.cartel.cartel.Repository.CardOrderRepository;
  * @author USER
  *
  */
+@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
 @RestController
 @RequestMapping({"/cardorder"})
 public class CardOrderController {
@@ -51,7 +53,7 @@ public class CardOrderController {
 	 * @return une nouvelle commande
 	 */
 	
-	@PostMapping(value = "/create/one")
+	@PostMapping(value = "/create")
 	public CardOrder create(@RequestBody CardOrder cardOrder) {
 		return repository.save(cardOrder);
 	}
