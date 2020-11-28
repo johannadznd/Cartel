@@ -42,9 +42,8 @@ public class CardOrder {
 	private float price;
 	private Timestamp creation;
 	
-	@ManyToOne()
-	@JoinColumn(name = "user" )
-    private User user;
+
+    private Long user;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
@@ -83,11 +82,11 @@ public class CardOrder {
 	}
 
 	
-	public User getUser() {
+	public Long getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(Long user) {
 		this.user = user;
 	}
 	

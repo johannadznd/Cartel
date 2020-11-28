@@ -6,6 +6,7 @@ package com.cartel.cartel.Controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.cartel.cartel.Enum.accessoryType;
 import com.cartel.cartel.Model.Product;
@@ -60,6 +62,11 @@ public class ProductController {
 	    	  }
 	      }
 		  
+	      if(products.isEmpty()) {
+	          throw new ResponseStatusException(
+	                  HttpStatus.BAD_REQUEST);
+	      }
+	      
 		  return products;
 	  }
 	
@@ -69,7 +76,7 @@ public class ProductController {
 	   * @param product
 	   * @return
 	   */
-	  @PostMapping(value = "/create/one")
+	  @PostMapping(value = "/create")
 	  public Product create(@RequestBody Product product){
 		  // Java 7 et antérieur
 		  return repository.save(product);
@@ -118,8 +125,6 @@ public class ProductController {
 					  return ResponseEntity.ok().build();
 				  }).orElse(ResponseEntity.notFound().build());
 	  }
-	  
-	  
 	   
 }
 
