@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -42,13 +43,11 @@ public class Product {
 	@Enumerated(EnumType.STRING)
 	private accessoryType accessoryType;
 	
-
-
 	private String dimension;
 	
 	@ManyToMany(mappedBy = "products", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	private Set<CardOrder> cardOrders = new HashSet<>();
-	
+		
 	/**
 	 * @return the name
 	 */
@@ -111,10 +110,7 @@ public class Product {
 		this.dimension = dimension;
 	}
 
-	
-    public Set<CardOrder> getCardOrders() {
-        return cardOrders;
-    }
+
     
     public void addCardOrder(CardOrder cardOrder) {
         cardOrders.add(cardOrder);

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -19,8 +20,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -33,14 +32,21 @@ public class User {
     @JoinColumn(name = "id")
     private List<CardOrder> cardOrders = new ArrayList<>();
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id 
+    @GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private Long id;
 	
 	private String firstName;
 	private String lastName;
 	private String email;
 	private String adress;
+	
+	/**
+	 * @return the firstName
+	 */
+	public Long getId() {
+		return id;
+	}
 
 	/**
 	 * @return the firstName
@@ -96,7 +102,6 @@ public class User {
 	 */
 	public void setAdress(String adress) {
 		this.adress = adress;
-	}
-	
+	}	
 
 }

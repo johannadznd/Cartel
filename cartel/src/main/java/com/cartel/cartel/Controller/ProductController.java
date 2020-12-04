@@ -61,12 +61,6 @@ public class ProductController {
 	    		  products.add(product);
 	    	  }
 	      }
-		  
-	      if(products.isEmpty()) {
-	          throw new ResponseStatusException(
-	                  HttpStatus.BAD_REQUEST);
-	      }
-	      
 		  return products;
 	  }
 	

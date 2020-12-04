@@ -50,6 +50,7 @@ public class UserController {
 	   */
 	  @PostMapping(value = "/create")
 	  public User create(@RequestBody User user){
-		  return repository.save(user);
+		  repository.save(user);
+		  return user;
 	  }
 }
