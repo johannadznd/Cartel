@@ -36,7 +36,6 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
 	private String name;
 	private Integer price;
 	private String picture;
@@ -48,6 +47,20 @@ public class Product {
 	@ManyToMany(mappedBy = "products", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	private Set<CardOrder> cardOrders = new HashSet<>();
 		
+	/**
+	 * @return the id
+	 */
+	public Long id() {
+		return id;
+	}
+	
+	
+	/**
+     * @return the firstName
+     */
+    public Long getId() {
+        return id;
+    }
 	/**
 	 * @return the name
 	 */
@@ -84,6 +97,7 @@ public class Product {
 	public void setPicture(String picture) {
 		this.picture = picture;
 	}
+	
 	/**
 	 * @return the accessoryType
 	 */
