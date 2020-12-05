@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.cartel.cartel.Enum.accessoryType;
+import com.cartel.cartel.Model.CardOrder;
 import com.cartel.cartel.Model.Product;
 import com.cartel.cartel.Repository.ProductRepository;
 
@@ -47,6 +48,19 @@ public class ProductController {
 	  public List<Product> findAll(){
 		  return repository.findAll();
 	  }
+	  
+	  /**
+		 * Recupérer un produit avec un id
+		 * @param id
+		 * @return un produit
+		 */
+
+		@GetMapping(value = "/{id}")
+		public ResponseEntity<Product> findById(@PathVariable long id){
+			return repository.findById(id)
+					.map(record -> ResponseEntity.ok().body(record))
+					.orElse(ResponseEntity.notFound().build());
+		}
 	  
 	  /**
 	   * Permet dde récupérer l'ensemble des products.
