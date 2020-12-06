@@ -47,16 +47,9 @@ public class Product {
 	@ManyToMany(mappedBy = "products", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	private Set<CardOrder> cardOrders = new HashSet<>();
 		
-	/**
-	 * @return the id
-	 */
-	public Long id() {
-		return id;
-	}
-	
 	
 	/**
-     * @return the firstName
+     * @return the id
      */
     public Long getId() {
         return id;
