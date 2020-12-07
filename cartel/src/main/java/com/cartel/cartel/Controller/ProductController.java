@@ -75,6 +75,12 @@ public class ProductController {
 	    		  products.add(product);
 	    	  }
 	      }
+	      
+	      if(products.isEmpty()) {
+	          throw new ResponseStatusException(
+	                  HttpStatus.BAD_REQUEST, "category not found");
+	      }
+	      
 		  return products;
 	  }
 	
