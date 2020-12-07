@@ -69,16 +69,23 @@ public class ProductController {
 	  @GetMapping(value= "/category/{category}")
 	  public List<Product> findAllByCategory(@PathVariable("category") String category){
 		  List<Product> products = new ArrayList<>();
+		  boolean categoryExist = false;
+		  
+		  for(accessoryType accessoryType : accessoryType.values()) {
+			  if(accessoryType.toString().equals(category)) {
+				  categoryExist = true;
+			  }
+		  }
+		  
+		  if(!categoryExist) {
+	          throw new ResponseStatusException(
+	                  HttpStatus.BAD_REQUEST, "category not found");
+		  }
 		  
 	      for(Product product : repository.findAll()) {
 	    	  if(product.getAccessoryType().toString().equals(category)) {
 	    		  products.add(product);
 	    	  }
-	      }
-	      
-	      if(products.isEmpty()) {
-	          throw new ResponseStatusException(
-	                  HttpStatus.BAD_REQUEST, "category not found");
 	      }
 	      
 		  return products;
