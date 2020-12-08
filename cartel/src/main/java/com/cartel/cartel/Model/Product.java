@@ -116,8 +116,6 @@ public class Product {
 	public void setDimension(String dimension) {
 		this.dimension = dimension;
 	}
-
-
     
     public void addCardOrder(CardOrder cardOrder) {
         cardOrders.add(cardOrder);
