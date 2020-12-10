@@ -43,6 +43,7 @@ public class Product {
 	private accessoryType accessoryType;
 	
 	private String dimension;
+	private String description;
 	
 	@ManyToMany(mappedBy = "products", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	private Set<CardOrder> cardOrders = new HashSet<>();
@@ -124,6 +125,15 @@ public class Product {
 		this.dimension = dimension;
 	}
 
+	
+	public String getDescription() {
+		return description;
+	}
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}   
 
     
     public void addCardOrder(CardOrder cardOrder) {
@@ -138,8 +148,9 @@ public class Product {
                 ", name='" + name + '\'' +
                 ", picture='" + picture + '\'' +
                 ", accessoryType='" + accessoryType + '\'' +
+                ", description='" + description + '\'' +
                 '}';
-    
-    }   
+        }
+	
 }
 
