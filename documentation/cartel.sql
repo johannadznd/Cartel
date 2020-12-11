@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 10 déc. 2020 à 08:51
+-- Généré le :  ven. 11 déc. 2020 à 20:35
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.3.5
 
@@ -31,12 +31,12 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `card_order`;
 CREATE TABLE IF NOT EXISTS `card_order` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `price` int(11) DEFAULT NULL,
+  `price` float DEFAULT NULL,
   `creation` datetime NOT NULL,
   `user` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `user` (`user`)
-) ENGINE=MyISAM AUTO_INCREMENT=95 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=100 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `card_order`
@@ -111,7 +111,12 @@ INSERT INTO `card_order` (`id`, `price`, `creation`, `user`) VALUES
 (91, 12, '2020-12-09 09:50:57', 308),
 (92, 12, '2020-12-09 09:51:35', 309),
 (93, 12, '2020-12-09 09:52:57', 310),
-(94, 12, '2020-12-09 10:06:45', 311);
+(94, 12, '2020-12-09 10:06:45', 311),
+(95, 12, '2020-12-11 10:26:37', 312),
+(96, 12, '2020-12-11 10:26:48', 313),
+(97, 12, '2020-12-11 10:27:58', 314),
+(98, 12, '2020-12-11 10:31:49', 315),
+(99, 12, '2020-12-11 10:43:38', 316);
 
 -- --------------------------------------------------------
 
@@ -123,10 +128,10 @@ DROP TABLE IF EXISTS `product`;
 CREATE TABLE IF NOT EXISTS `product` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
-  `price` int(11) NOT NULL,
+  `price` float NOT NULL,
   `picture` varchar(510) NOT NULL,
   `dimension` varchar(510) DEFAULT NULL COMMENT 'Array',
-  `Description` text,
+  `Description` text NOT NULL,
   `accessory_type` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=42 DEFAULT CHARSET=latin1;
@@ -136,36 +141,35 @@ CREATE TABLE IF NOT EXISTS `product` (
 --
 
 INSERT INTO `product` (`id`, `name`, `price`, `picture`, `dimension`, `Description`, `accessory_type`) VALUES
-(12, 'jznf', 12, 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/627fe721-846f-4f75-ac61-111ca00b27dd/d9smc72-bd1ea8b5-02a5-434e-b208-31ff267cc51a.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvNjI3ZmU3MjEtODQ2Zi00Zjc1LWFjNjEtMTExY2EwMGIyN2RkXC9kOXNtYzcyLWJkMWVhOGI1LTAyYTUtNDM0ZS1iMjA4LTMxZmYyNjdjYzUxYS5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.UAoU5oSLSmtA65Zqh4IO-XpE16MtWol47_h3epESxtY', 'xl', 'Lorem ipsum', 'sleeve'),
-(13, 'barnabé', 4, 'zfdsdfhqsbchbbc', 'xxl', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id sagittis lorem. Quisque a lobortis lectus. Nam libero sapien, tempus sit amet dapibus accumsan, faucibus id est', 'sleeve'),
-(14, 'sq', 5, 'zfdsdfjsqncjsn', 's', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id sagittis lorem. Quisque a lobortis lectus. Nam libero sapien, tempus sit amet dapibus accumsan, faucibus id est', 'sleeve'),
-(15, 'ezfzeaaa', 6, 'zfdsdf', 'l', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id sagittis lorem. Quisque a lobortis lectus. Nam libero sapien, tempus sit amet dapibus accumsan, faucibus id est', 'sleeve'),
-(16, 'ijjkjk', 7, 'barnabé', 'm', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id sagittis lorem. Quisque a lobortis lectus. Nam libero sapien, tempus sit amet dapibus accumsan, faucibus id est', 'sleeve'),
-(17, 'jkjkk', 12, 'dsf', 'xxs', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id sagittis lorem. Quisque a lobortis lectus. Nam libero sapien, tempus sit amet dapibus accumsan, faucibus id est', 'sleeve'),
-(18, 'popo', 12, 'sqfqsxcxc', 'm', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id sagittis lorem. Quisque a lobortis lectus. Nam libero sapien, tempus sit amet dapibus accumsan, faucibus id est', 'sleeve'),
-(19, 'lolpo', 12, 'aaa', 'l', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id sagittis lorem. Quisque a lobortis lectus. Nam libero sapien, tempus sit amet dapibus accumsan, faucibus id est', 'sleeve'),
-(20, 'ertra', 12, 'kili', 'xxl', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id sagittis lorem. Quisque a lobortis lectus. Nam libero sapien, tempus sit amet dapibus accumsan, faucibus id est', 'sleeve'),
-(21, 'buik', 12, 'sqss', 'm', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id sagittis lorem. Quisque a lobortis lectus. Nam libero sapien, tempus sit amet dapibus accumsan, faucibus id est', 'sleeve'),
-(22, 'vrter', 12, 'sqfqsllksqlcds', 'xl', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id sagittis lorem. Quisque a lobortis lectus. Nam libero sapien, tempus sit amet dapibus accumsan, faucibus id est', 'sleeve'),
-(23, 'juju', 12, 'https://lecoindesbarons.com/wp-content/uploads/2019/09/70803298_3065698620170421_7665317335346970624_n.png', 'm', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id sagittis lorem. Quisque a lobortis lectus. Nam libero sapien, tempus sit amet dapibus accumsan, faucibus id est', 'carpet'),
-(24, 'qsdqdqs', 12, 'https://ae01.alicdn.com/kf/HTB18vguRFXXXXX3XXXXq6xXFXXXD/YGO-tapis-de-jeu-alternatif-yeux-bleus-Dragon-blanc-jeux-de-soci-t-yu-gi-oh.jpg', 'xl', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id sagittis lorem. Quisque a lobortis lectus. Nam libero sapien, tempus sit amet dapibus accumsan, faucibus id est', 'carpet'),
-(25, 'jhgfdf', 12, 'https://lecoindesbarons.com/wp-content/uploads/2019/09/70803298_3065698620170421_7665317335346970624_n.png', 'xxs', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id sagittis lorem. Quisque a lobortis lectus. Nam libero sapien, tempus sit amet dapibus accumsan, faucibus id est', 'carpet'),
-(26, 'freza', 12, 'https://lecoindesbarons.com/wp-content/uploads/2019/09/70803298_3065698620170421_7665317335346970624_n.png', 'xl', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id sagittis lorem. Quisque a lobortis lectus. Nam libero sapien, tempus sit amet dapibus accumsan, faucibus id est', 'carpet'),
-(27, 'qsdqdqs', 12, 'https://ae01.alicdn.com/kf/HTB18vguRFXXXXX3XXXXq6xXFXXXD/YGO-tapis-de-jeu-alternatif-yeux-bleus-Dragon-blanc-jeux-de-soci-t-yu-gi-oh.jpg', 'xs', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id sagittis lorem. Quisque a lobortis lectus. Nam libero sapien, tempus sit amet dapibus accumsan, faucibus id est', 'carpet'),
-(28, 'test', 12, 'https://lecoindesbarons.com/wp-content/uploads/2019/09/70803298_3065698620170421_7665317335346970624_n.png', 's', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id sagittis lorem. Quisque a lobortis lectus. Nam libero sapien, tempus sit amet dapibus accumsan, faucibus id est', 'carpet'),
-(29, 'z$ef', 12, 'https://lecoindesbarons.com/wp-content/uploads/2019/09/70803298_3065698620170421_7665317335346970624_n.png', 'xxl', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id sagittis lorem. Quisque a lobortis lectus. Nam libero sapien, tempus sit amet dapibus accumsan, faucibus id est', 'carpet'),
-(30, 'zefg', 12, 'https://lecoindesbarons.com/wp-content/uploads/2019/09/70803298_3065698620170421_7665317335346970624_n.png', 'xs', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id sagittis lorem. Quisque a lobortis lectus. Nam libero sapien, tempus sit amet dapibus accumsan, faucibus id est', 'carpet'),
-(31, 'HENTYR', 12, 'https://lecoindesbarons.com/wp-content/uploads/2019/09/70803298_3065698620170421_7665317335346970624_n.png', 'xxs', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id sagittis lorem. Quisque a lobortis lectus. Nam libero sapien, tempus sit amet dapibus accumsan, faucibus id est', 'carpet'),
-(32, 'ERGA', 4, 'zfdsdfhqsbchbbc', 'xxl', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id sagittis lorem. Quisque a lobortis lectus. Nam libero sapien, tempus sit amet dapibus accumsan, faucibus id est', 'sleeve'),
-(33, 'zeg', 4, 'zfdsdfhqsbchbbc', 'xxl', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id sagittis lorem. Quisque a lobortis lectus. Nam libero sapien, tempus sit amet dapibus accumsan, faucibus id est', 'sleeve'),
-(34, 'ertb', 4, 'zfdsdfhqsbchbbc', 'xxl', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id sagittis lorem. Quisque a lobortis lectus. Nam libero sapien, tempus sit amet dapibus accumsan, faucibus id est', 'sleeve'),
-(35, 'rfgaerg', 4, 'zfdsdfhqsbchbbc', 'xxl', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id sagittis lorem. Quisque a lobortis lectus. Nam libero sapien, tempus sit amet dapibus accumsan, faucibus id est', 'sleeve'),
-(36, 'qefrbarg', 4, 'zfdsdfhqsbchbbc', 'xxl', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id sagittis lorem. Quisque a lobortis lectus. Nam libero sapien, tempus sit amet dapibus accumsan, faucibus id est', 'sleeve'),
-(37, 'aef', 4, 'zfdsdfhqsbchbbc', 'xxl', NULL, 'sleeve'),
-(38, 'ETHZ', 4, 'zfdsdfhqsbchbbc', 'xxl', NULL, 'sleeve'),
-(39, 'GATH', 4, 'zfdsdfhqsbchbbc', 'xxl', NULL, 'sleeve'),
-(40, 'ytnet-y', 4, 'zfdsdfhqsbchbbc', 'xxl', NULL, 'sleeve'),
-(41, 'tbzhrth', 4, 'zfdsdfhqsbchbbc', 'xxl', NULL, 'sleeve');
+(12, 'Yu-Gi-Oh Trading cart game', 12, 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/627fe721-846f-4f75-ac61-111ca00b27dd/d9smc72-bd1ea8b5-02a5-434e-b208-31ff267cc51a.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvNjI3ZmU3MjEtODQ2Zi00Zjc1LWFjNjEtMTExY2EwMGIyN2RkXC9kOXNtYzcyLWJkMWVhOGI1LTAyYTUtNDM0ZS1iMjA4LTMxZmYyNjdjYzUxYS5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.UAoU5oSLSmtA65Zqh4IO-XpE16MtWol47_h3epESxtY', 'xl', '\r\nProtégez vos cartes à jouer dans les meilleurs conditions avec cette gamme de protège carte de bonne qualité à bas prix !', 'sleeve'),
+(13, 'YuGiOh JAPANESE', 4, 'https://i.ebayimg.com/images/g/AlgAAOSwCHddafa4/s-l300.jpg', 'xxl', '\r\nProtégez vos cartes à jouer dans les meilleurs conditions avec cette gamme de protège carte de bonne qualité à bas prix !', 'sleeve'),
+(14, 'Yu-Gi-Oh! Duel Links', 5, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuL38eMfIlS91llvJa95od9W7-slCIibqKfw&usqp=CAU', 's', '\r\nProtégez vos cartes à jouer dans les meilleurs conditions avec cette gamme de protège carte de bonne qualité à bas prix !', 'sleeve'),
+(15, 'YuGiOh JAPANESE-bleu Maiden & Ghost Girl', 6, 'https://i.ebayimg.com/images/g/G5IAAOSwZSFdafhI/s-l1600.jpg', 'l', '\r\nProtégez vos cartes à jouer dans les meilleurs conditions avec cette gamme de protège carte de bonne qualité à bas prix !', 'sleeve'),
+(16, 'YuGiOh JAPANESE-Firewall Dragon', 7, 'https://i.ebayimg.com/images/g/dEoAAOSw64xcLf8z/s-l300.jpg', 'm', '\r\nProtégez vos cartes à jouer dans les meilleurs conditions avec cette gamme de protège carte de bonne qualité à bas prix !', 'sleeve'),
+(17, 'Pokemon Détective Pikachu modèle Pikachu', 12, 'https://www.bacchusia-jeux.com/3167-large_default/pokemon-sleeve-x65-detective-pikachu-modele-pikachu.jpg', 'xxs', '\r\nProtégez vos cartes à jouer dans les meilleurs conditions avec cette gamme de protège carte de bonne qualité à bas prix !', 'sleeve'),
+(18, 'Official Pokemon Card Deck Shield ', 12, 'https://images-na.ssl-images-amazon.com/images/I/51Fws1O9C3L._AC_SX355_.jpg', 'm', '\r\nProtégez vos cartes à jouer dans les meilleurs conditions avec cette gamme de protège carte de bonne qualité à bas prix !', 'sleeve'),
+(19, 'Pokémon Cynthia\r\n', 12, 'https://www.pikastore.fr/2179-large_default/-jap-x1-pokemon-sleeve-cynthia.jpg', 'l', '\r\nProtégez vos cartes à jouer dans les meilleurs conditions avec cette gamme de protège carte de bonne qualité à bas prix !', 'sleeve'),
+(20, 'Pokémon  Flambino', 12, 'https://www.ultrajeux.com/images/produits/maxi/15261.jpg', 'xxl', '\r\nProtégez vos cartes à jouer dans les meilleurs conditions avec cette gamme de protège carte de bonne qualité à bas prix !', 'sleeve'),
+(21, 'Pokémon Eevee Friendship', 12, 'https://www.pokemoncenter.com/products/images/P5787/710-04399/P5787_710-04399_01.jpg', 'm', '\r\nProtégez vos cartes à jouer dans les meilleurs conditions avec cette gamme de protège carte de bonne qualité à bas prix !', 'sleeve'),
+(23, '\r\nKonami Abysse Corp_ACCYGO041 YU-Gi-Oh Tapis de Jeu', 12, 'https://images-na.ssl-images-amazon.com/images/I/81dk9bs7nCL._AC_SL1500_.jpg', 'm', 'Voici l\'un de nos plus beau tapis de jeux de bonne qualité à bas prix ! ', 'carpet'),
+(24, 'Mana The Dark Magician Girl Tapis pour Yu-Gi-Oh! ', 12, 'https://images-na.ssl-images-amazon.com/images/I/5195LHus%2BOL._AC_SX425_.jpg', 'xl', 'Voici l\'un de nos plus beau tapis de jeux de bonne qualité à bas prix ! ', 'carpet'),
+(25, 'Yu-Gi-Oh Double Playmat New & Sealed\r\n', 12, 'https://i.ebayimg.com/images/g/FU0AAOSwxuxbET2o/s-l300.jpg', 'xxs', 'Voici l\'un de nos plus beau tapis de jeux de bonne qualité à bas prix ! ', 'carpet'),
+(26, 'Dragon  yu-gi-oh, tapis de jeu ', 12, 'https://ae01.alicdn.com/kf/HTB18vguRFXXXXX3XXXXq6xXFXXXD/YGO-tapis-de-jeu-alternatif-yeux-bleus-Dragon-blanc-jeux-de-soci-t-yu-gi-oh.jpg', 'xl', 'Voici l\'un de nos plus beau tapis de jeux de bonne qualité à bas prix ! ', 'carpet'),
+(27, 'Tapis de jeu Yu-Gi-Oh! - Golden Duelist Collection', 12, 'https://www.magicbazar.fr/img/product/yu-gi-oh_playmat_golden_duelist_collection.jpg', 'xs', 'Voici l\'un de nos plus beau tapis de jeux de bonne qualité à bas prix ! ', 'carpet'),
+(28, 'Tapis de Jeu Pokemon Dracaufeu Et Tortank ', 12, 'https://i.ebayimg.com/images/g/DJ4AAOSwowddAPnl/s-l300.jpg', 's', 'Voici l\'un de nos plus beau tapis de jeux de bonne qualité à bas prix ! ', 'carpet'),
+(29, 'Pokemon tapis de jeu Double joueur, tapis de bataille rouge VS', 12, 'https://ae01.alicdn.com/kf/H447e496dc92e4e46b893ee0031a9804dZ.jpg', 'xxl', 'Voici l\'un de nos plus beau tapis de jeux de bonne qualité à bas prix ! ', 'carpet'),
+(30, 'Tapis de  jeu Pokemon duel', 12, 'https://storage.googleapis.com/wzukusers/user-13566597/images/579770fd964e1I4czF34/Plateau-PokemonBD.jpg', 'xs', 'Voici l\'un de nos plus beau tapis de jeux de bonne qualité à bas prix ! ', 'carpet'),
+(31, 'Tapis De Jeu Ronflex (Snorlax) Pokémon ', 12, 'https://www.ultrajeux.com/images/produits/maxi/12315.jpg', 'xxs', 'Voici l\'un de nos plus beau tapis de jeux de bonne qualité à bas prix ! ', 'carpet'),
+(32, 'Pokemon Rayquaza tapis de jeu ', 4, 'https://ae01.alicdn.com/kf/H833b67e5bf3142fe9d793e3d172fdef5H/Pokemon-Rayquaza-tapis-de-jeu-jeu-de-cartes-collectionner-monstres-explorateurs-sombres-accessoires-TCG-tapis-de.jpg_q50.jpg', 'xxl', 'Voici l\'un de nos plus beau tapis de jeux de bonne qualité à bas prix ! ', 'carpet'),
+(33, 'HARDCASE Yu-gi-oh Duelist Card box', 4, 'https://images-na.ssl-images-amazon.com/images/I/41898GFBQEL._AC_.jpg', 'xxl', 'Nunc ut libero quis lectus consequat fermentum et in erat. Vestibulum condimentum tellus vel magna rhoncus, vitae ornare augue fermentum. Nam auctor dolor sed elit luctus facilisis. Nunc sem arcu, gravida ac mollis eu, rutrum ac mi. Aliquam pellentesque aliquam lacus ac varius. Suspendisse efficitur quam a tincidunt tempus. Nullam eget euismod lectus. Pellentesque eget ullamcorper ex, vel maximus risus.', 'box'),
+(34, 'Yugioh Yugi\'s Legendary Decks  Set Box ', 4, 'https://i5.walmartimages.com/asr/317736b0-bb11-420c-9603-96be22d52e6f_1.17784be270fffd04c9770dfca42b5a2d.jpeg', 'xxl', 'Nunc ut libero quis lectus consequat fermentum et in erat. Vestibulum condimentum tellus vel magna rhoncus, vitae ornare augue fermentum. Nam auctor dolor sed elit luctus facilisis. Nunc sem arcu, gravida ac mollis eu, rutrum ac mi. Aliquam pellentesque aliquam lacus ac varius. Suspendisse efficitur quam a tincidunt tempus. Nullam eget euismod lectus. Pellentesque eget ullamcorper ex, vel maximus risus.', 'box'),
+(35, 'Yugioh Golden Duelist Collection Card Case', 4, 'https://static.cardmarket.com/img/577ba6cc5cdd452f3a77f967219c00b9/items/15/366034.jpg', 'xxl', 'Nunc ut libero quis lectus consequat fermentum et in erat. Vestibulum condimentum tellus vel magna rhoncus, vitae ornare augue fermentum. Nam auctor dolor sed elit luctus facilisis. Nunc sem arcu, gravida ac mollis eu, rutrum ac mi. Aliquam pellentesque aliquam lacus ac varius. Suspendisse efficitur quam a tincidunt tempus. Nullam eget euismod lectus. Pellentesque eget ullamcorper ex, vel maximus risus.', 'box'),
+(36, 'Deck Box Yu Gi Oh Dark Hex Card Case ', 4, 'https://www.magicbazar.fr/img/product/dhc_cardcase_mock.jpg', 'xxl', 'Nunc ut libero quis lectus consequat fermentum et in erat. Vestibulum condimentum tellus vel magna rhoncus, vitae ornare augue fermentum. Nam auctor dolor sed elit luctus facilisis. Nunc sem arcu, gravida ac mollis eu, rutrum ac mi. Aliquam pellentesque aliquam lacus ac varius. Suspendisse efficitur quam a tincidunt tempus. Nullam eget euismod lectus. Pellentesque eget ullamcorper ex, vel maximus risus.', 'box'),
+(37, 'Yu-Gi-Oh! Deck Box Chibi', 4, 'https://images.fr.shopping.rakuten.com/photo/1041834303_ML_NOPAD.jpgv', 'xxl', 'Nunc ut libero quis lectus consequat fermentum et in erat. Vestibulum condimentum tellus vel magna rhoncus, vitae ornare augue fermentum. Nam auctor dolor sed elit luctus facilisis. Nunc sem arcu, gravida ac mollis eu, rutrum ac mi. Aliquam pellentesque aliquam lacus ac varius. Suspendisse efficitur quam a tincidunt tempus. Nullam eget euismod lectus. Pellentesque eget ullamcorper ex, vel maximus risus.', 'box'),
+(38, 'Pokémon TCG Sword and Shield Booster Cartes et présentoir', 4, 'https://m.media-amazon.com/images/I/71R143+AkGL._AC_SL1128_.jpg', 'xxl', 'Nunc ut libero quis lectus consequat fermentum et in erat. Vestibulum condimentum tellus vel magna rhoncus, vitae ornare augue fermentum. Nam auctor dolor sed elit luctus facilisis. Nunc sem arcu, gravida ac mollis eu, rutrum ac mi. Aliquam pellentesque aliquam lacus ac varius. Suspendisse efficitur quam a tincidunt tempus. Nullam eget euismod lectus. Pellentesque eget ullamcorper ex, vel maximus risus.', 'box'),
+(39, 'Pokemon Cards SWORD V & SHIELD V Korean', 4, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmRPnBltSfwm2x9q7RyyNJlfXen3RFEh5YNw&usqp=CAU', 'xxl', 'Nunc ut libero quis lectus consequat fermentum et in erat. Vestibulum condimentum tellus vel magna rhoncus, vitae ornare augue fermentum. Nam auctor dolor sed elit luctus facilisis. Nunc sem arcu, gravida ac mollis eu, rutrum ac mi. Aliquam pellentesque aliquam lacus ac varius. Suspendisse efficitur quam a tincidunt tempus. Nullam eget euismod lectus. Pellentesque eget ullamcorper ex, vel maximus risus.', 'box'),
+(40, 'Pokémon Card Premium Box Melmetal GX', 4, 'https://meccha-japan.com/21137-large_default/pokemon-card-premium-box-melmetal-gx.jpg', 'xxl', 'Nunc ut libero quis lectus consequat fermentum et in erat. Vestibulum condimentum tellus vel magna rhoncus, vitae ornare augue fermentum. Nam auctor dolor sed elit luctus facilisis. Nunc sem arcu, gravida ac mollis eu, rutrum ac mi. Aliquam pellentesque aliquam lacus ac varius. Suspendisse efficitur quam a tincidunt tempus. Nullam eget euismod lectus. Pellentesque eget ullamcorper ex, vel maximus risus.', 'box'),
+(41, 'Pokémon Trading Cards, Tin Box Rillaboom', 4, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhqkP_rv1-31JvYKddLBE3ldhFiIYrmQdi9g&usqp=CAU', 'xxl', 'Nunc ut libero quis lectus consequat fermentum et in erat. Vestibulum condimentum tellus vel magna rhoncus, vitae ornare augue fermentum. Nam auctor dolor sed elit luctus facilisis. Nunc sem arcu, gravida ac mollis eu, rutrum ac mi. Aliquam pellentesque aliquam lacus ac varius. Suspendisse efficitur quam a tincidunt tempus. Nullam eget euismod lectus. Pellentesque eget ullamcorper ex, vel maximus risus.', 'box');
 
 -- --------------------------------------------------------
 
@@ -220,7 +224,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `email` varchar(255) NOT NULL,
   `adress` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=312 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=317 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `user`
@@ -313,7 +317,12 @@ INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `adress`) VALUES
 (308, 'efzEG', 'ZEG', 'email@gmail.com', '214 rue de la cheval'),
 (309, 'firstName', 'lastName', 'email@gmail.com', '214 rue de la cheval'),
 (310, 'firstName', 'lastName', 'email@gmail.com', '214 rue de la cheval'),
-(311, 'firstName', 'lastName', 'email@gmail.com', '214 rue de la cheval');
+(311, 'firstName', 'lastName', 'email@gmail.com', '214 rue de la cheval'),
+(312, 'firstName', 'lastName', 'email@gmail.com', '214 rue de la cheval'),
+(313, 'firstName', 'lastName', 'email@gmail.com', '214 rue de la cheval'),
+(314, 'firstName', 'lastName', 'email@gmail.com', '214 rue de la cheval'),
+(315, 'firstName', 'lastName', 'email@gmail.com', '214 rue de la cheval'),
+(316, 'firstName', 'lastName', 'email@gmail.com', '214 rue de la cheval');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
