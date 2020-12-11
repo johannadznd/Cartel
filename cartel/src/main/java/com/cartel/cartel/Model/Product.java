@@ -37,7 +37,7 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-	private Integer price;
+	private float price;
 	private String picture;
 	@Enumerated(EnumType.STRING)
 	private accessoryType accessoryType;
@@ -69,13 +69,13 @@ public class Product {
 	/**
 	 * @return the price
 	 */
-	public Integer getPrice() {
+	public float getPrice() {
 		return price;
 	}
 	/**
 	 * @param price the price to set
 	 */
-	public void setPrice(Integer price) {
+	public void setPrice(float price) {
 		this.price = price;
 	}
 	/**
