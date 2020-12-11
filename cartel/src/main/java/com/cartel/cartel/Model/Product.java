@@ -37,7 +37,7 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-	private float price;
+	private Integer price;
 	private String picture;
 	@Enumerated(EnumType.STRING)
 	private accessoryType accessoryType;
@@ -70,13 +70,13 @@ public class Product {
 	/**
 	 * @return the price
 	 */
-	public float getPrice() {
+	public Integer getPrice() {
 		return price;
 	}
 	/**
 	 * @param price the price to set
 	 */
-	public void setPrice(float price) {
+	public void setPrice(Integer price) {
 		this.price = price;
 	}
 	/**
@@ -118,6 +118,7 @@ public class Product {
 		this.dimension = dimension;
 	}
 
+	
 	public String getDescription() {
 		return description;
 	}
@@ -126,6 +127,7 @@ public class Product {
 	public void setDescription(String description) {
 		this.description = description;
 	}   
+
     
     public void addCardOrder(CardOrder cardOrder) {
         cardOrders.add(cardOrder);

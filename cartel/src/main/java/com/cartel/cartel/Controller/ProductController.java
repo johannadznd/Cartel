@@ -124,6 +124,7 @@ public class ProductController {
 					  record.setPicture(product.getPicture());
 					  record.setAccessoryType(product.getAccessoryType());
 					  record.setDimension(product.getDimension());
+					  record.setDescription(product.getDescription());
 					  Product updated = repository.save(record);
 					  return ResponseEntity.ok().body(updated);
 				  }).orElse(ResponseEntity.notFound().build());
