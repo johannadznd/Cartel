@@ -46,7 +46,7 @@ public class CardOrder {
 	@JoinColumn(name="User")
     private User user;
     
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinTable(
             name = "product_cardorder",
             joinColumns = {@JoinColumn(name = "cardorder")},
