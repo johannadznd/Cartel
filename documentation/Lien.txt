@@ -1,6 +1,2 @@
-<<<<<<< HEAD
 abode : https://xd.adobe.com/view/0c5c7814-a44b-469c-8af4-7141975168ff-590f/
 word : https://auvencecom-my.sharepoint.com/:w:/g/personal/matthias_chometon_ynov_com/EaLnFPJzBipDiLlsg82gzmcBaIaZWitwACEtSunJjwOwmA?e=4%3AKZIw8Q&at=9&CID=a8e8aaeb-3de4-675f-f47d-c3a2cf0f28d4
-=======
-word : https://auvencecom-my.sharepoint.com/:w:/g/personal/matthias_chometon_ynov_com/EaLnFPJzBipDiLlsg82gzmcBaIaZWitwACEtSunJjwOwmA?e=4%3AKZIw8Q&at=9&CID=a8e8aaeb-3de4-675f-f47d-c3a2cf0f28d4
->>>>>>> e4f0548dd55b87a98bd73d964f63a7c8a0ce3466
